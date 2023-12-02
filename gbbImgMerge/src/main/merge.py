@@ -8,13 +8,6 @@ img_dir_path = dir_path + "/resources/images/"
 
 folder_list = ["rock", "scissors", "paper"]
 
-
-def get_image_file_name_list(path):
-    return os.listdir(path)
-
-def get_image(path):
-    return Image.open(path)
-
 def random_img_rotate(img):
     limit = 70
     angle = random.randint(-limit, limit)
@@ -32,8 +25,8 @@ def paste_image(img1, img2):
     return new_image
 
 def merge_image(img_path1, img_path2):
-    image1 = get_image(img_path1)
-    image2 = get_image(img_path2)
+    image1 =Image.open(img_path1)
+    image2 = Image.open(img_path2)
 
     image1 = random_img_rotate(image1.rotate(180,expand=1))
     image2 = random_img_rotate(image2)
@@ -50,11 +43,11 @@ def save_image(image_info):
 def create_merge_image():
     for left in folder_list:
         left_folder_path = img_dir_path + left
-        left_file_list = get_image_file_name_list(left_folder_path)
+        left_file_list = os.listdir(left_folder_path)
         for right in folder_list:
             kategorie = left + '_' + right
             right_foler_path = img_dir_path + right
-            right_file_list = get_image_file_name_list(right_foler_path)
+            right_file_list = os.listdir(right_foler_path)
 
             for idx in range(1000):
                 image1_path = left_folder_path + "/" + left_file_list[random.randrange(0, len(left_file_list))]
