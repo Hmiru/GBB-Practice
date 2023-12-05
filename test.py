@@ -2,8 +2,8 @@ import torchvision
 from making_dataset import *
 import matplotlib.pyplot as plt
 import numpy as np
-from model import *
-from resnet import *
+from custom_lenet_model import *
+from custom_resnet_model import *
 images, labels = next(iter(test_loader))
 img_grid = torchvision.utils.make_grid(images)
 
