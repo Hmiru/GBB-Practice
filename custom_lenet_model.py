@@ -76,7 +76,7 @@ for epoch in range(epochs):
     my_lenet.train()
     for i, data in progress:
         inputs, labels = data[0].to(device), data[1].to(device)
-
+        labels = torch.argmax(labels, dim=1)
         optimizer.zero_grad()
         outputs = my_lenet(inputs)
         loss = loss_function(outputs, labels)
