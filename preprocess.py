@@ -5,6 +5,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib.image as img
 import yaml
+from torchvision import transforms
 from torchvision.transforms import Compose, Grayscale, Resize, Pad, ToTensor, Lambda
 import torch
 import matplotlib.pyplot as plt
@@ -81,7 +82,8 @@ def make_composed_transform_with_size(size):
         ExpandRectangle(),
         Resize(size),
         Grayscale(1),
-        ToTensor()
+        ToTensor(),
+        transforms.Normalize((0.5,), (0.5,))
     ])
 
 def make_one_hot_transform_with_class_num(num):

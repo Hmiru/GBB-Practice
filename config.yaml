@@ -1,1 +1,2 @@
 dataset_path: "C:/Users/mirun/image_dataset/gbb_dataset/merged/"
+Model_path: "myResNet.pth"

@@ -13,6 +13,7 @@ data_set = ImageFolder(DATASET_LOCATION,
                        transform=make_composed_transform_with_size(224),
                        target_transform=make_one_hot_transform_with_class_num(9)
                        )
+
 data_loader = DataLoader(data_set, batch_size=32, shuffle=True)
 label_to_class, class_to_label = data_set.find_classes(DATASET_LOCATION)
 def get_dataloader(batch_size, train, valid):
@@ -39,22 +40,4 @@ def get_dataloader(batch_size, train, valid):
     return train_loader, valid_loader, test_loader
 
 if __name__=="__main__":
-    train_loader, valid_loader, test_loader = get_dataloader(32,0.7, 0.15)
-    # 각 세트의 길이 확인
-    print("Train set size:", len(train_loader.dataset))
-    print("Validation set size:", len(valid_loader.dataset))
-    print("Test set size:", len(test_loader.dataset))
-
-
-    # 각 세트에서 몇 개의 데이터 샘플 확인
-    def check_label_distribution(loader):
-        label_count = {}
-        for _, labels in loader:
-            for label in labels:
-                label = label.item()  # Convert from tensor to integer
-                label_count[label] = label_count.get(label, 0) + 1
-        return label_count
-
-    print("Train label distribution:", check_label_distribution(train_loader))
-    print("Validation label distribution:", check_label_distribution(valid_loader))
-    print("Test label distribution:", check_label_distribution(test_loader))
+    pass
